@@ -3,7 +3,7 @@ package shapes;
 public class Circle extends Shape {
 	
 	private double radius;
-	final double pi = 3.14;
+	final double pi = Math.PI;
 	
 	public Circle() {
 		setRadius(1);

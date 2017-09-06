@@ -4,23 +4,22 @@ public class Triangle extends Shape {
 
 	private double a, b, c;
 	
-	public Triangle() {
-		setA(1);
-		setB(1);
-		setC(1);
-	}
-	
 	public Triangle(double a, double b, double c) {
-		setA(a);
-		setB(b);
-		setC(c);
+		if(!isTriangle(a, b, c)) throw new IllegalArgumentException("Not valid triangle sides");
+		if (a <= 0 || b <= 0 || c<= 0) {
+			throw new IllegalArgumentException("Triangle sides can't be <= 0");
+		}
+		this.a = a;
+		this.b = b;
+		this.c = c;
 	}
 	
 	public void setA(double a) {
 		if(a <= 0) {
 			throw new IllegalArgumentException("Side a can't be <= 0!");
 		}
-		else this.a = a;
+		if(!isTriangle(a, b, c)) throw new IllegalArgumentException("Not valid triangle sides");
+		this.a = a;
 	}
 	
 	public double getA() {
@@ -28,6 +27,8 @@ public class Triangle extends Shape {
 	}
 	
 	public void setB(double b) {
+		if(!isTriangle(a, b, c)) throw new IllegalArgumentException("Not valid triangle sides");
+
 		if(b <= 0) {
 			throw new IllegalArgumentException("Side b can't be <= 0!");
 		}
@@ -39,6 +40,8 @@ public class Triangle extends Shape {
 	}
 	
 	public void setC(double c) {
+		if(!isTriangle(a, b, c)) throw new IllegalArgumentException("Not valid triangle sides");
+
 		if(c <= 0) {
 			throw new IllegalArgumentException("Side c can't be <= 0!");
 		}
@@ -47,6 +50,11 @@ public class Triangle extends Shape {
 	
 	public double getC() {
 		return this.c;
+	}
+	
+	private boolean isTriangle(double a, double b, double c) {
+		if (a+b > c && a+c > b && b+c > a) return true;
+		return false;
 	}
 	
 	@Override

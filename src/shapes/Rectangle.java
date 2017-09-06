@@ -2,12 +2,7 @@ package shapes;
 
 public class Rectangle extends Shape {
 	
-	private double width, length; 
-	
-	public Rectangle() {
-		setWidth(1);
-		setLength(1);
-	}
+	private double mWidth, mLength; 
 	
 	public Rectangle(double width, double length) {
 		setWidth(width);
@@ -18,32 +13,32 @@ public class Rectangle extends Shape {
 		if(width <= 0) {
 			throw new IllegalArgumentException("Width can't be <= 0!");
 		}
-		else this.width = width;
+		mWidth = width;
 	}
 	
 	public double getWidth() {
-		return this.width;
+		return mWidth;
 	}
 	
 	public void setLength(double length) {
 		if(length <= 0) {
 			throw new IllegalArgumentException("Length can't be <= 0!");
 		}
-		else this.length = length;
+		mLength = length;
 	}
 	
 	public double getLenght() {
-		return this.length;
+		return mLength;
 	}
 
 	@Override
 	public double area() {
-		return (double)(width * length);
+		return mWidth * mLength;
 	}
 
 	@Override
 	public double perimeter() {
-		return (double)(2 * (width + length));
+		return 2 * (mWidth + mLength);
 	}
 
 }
