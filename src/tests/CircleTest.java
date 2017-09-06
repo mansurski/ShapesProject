@@ -1,10 +1,12 @@
-package shapes;
+package tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class CircleTests {
+import shapes.Circle;
+
+public class CircleTest {
 
 	@Test
 	public void test() {
