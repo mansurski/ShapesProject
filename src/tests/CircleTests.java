@@ -21,7 +21,8 @@ public class CircleTests {
 	}
 	@Test(expected = IllegalArgumentException.class)
 	public void creatingCircleWithNegativeOrZeroRadiusShouldThrowException() {
-		Circle circle = new Circle(-1);		
+		Circle circle = new Circle(-1);
+		circle.area();
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
