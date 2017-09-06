@@ -1,71 +1,75 @@
 package shapes;
-
+//triangle is shape
 public class Triangle extends Shape {
-
-	private double a, b, c;
+	//we can describe triangle with 3 sides
+	private double mSideA, mSideB, mSideC;
 	
-	public Triangle(double a, double b, double c) {
-		if(!isTriangle(a, b, c)) throw new IllegalArgumentException("Not valid triangle sides");
-		if (a <= 0 || b <= 0 || c<= 0) {
-			throw new IllegalArgumentException("Triangle sides can't be <= 0");
+	//constructing valid triangle
+	public Triangle(double sideA, double sideB, double sideC) {
+		if (sideA <= 0 || sideB <= 0 || sideC <= 0) {
+			throw new IllegalArgumentException("Triangle sides can't be <= 0!");
 		}
-		this.a = a;
-		this.b = b;
-		this.c = c;
+		if(!isValidTriangle(sideA, sideB, sideC)) 
+			throw new IllegalArgumentException("Not valid triangle sides!");
+		mSideA = sideA;
+		mSideB = sideB;
+		mSideC = sideC;
 	}
 	
-	public void setA(double a) {
-		if(a <= 0) {
+	//setting only valid sides for triangle
+	public void setSideA(double sideA) {
+		if(sideA <= 0)
 			throw new IllegalArgumentException("Side a can't be <= 0!");
-		}
-		if(!isTriangle(a, b, c)) throw new IllegalArgumentException("Not valid triangle sides");
-		this.a = a;
+		if(!isValidTriangle(sideA, mSideB, mSideC)) 
+			throw new IllegalArgumentException("Not valid side A!");
+		mSideA = sideA;
 	}
 	
-	public double getA() {
-		return this.a;
+	public double getSideA() {
+		return mSideA;
 	}
-	
-	public void setB(double b) {
-		if(!isTriangle(a, b, c)) throw new IllegalArgumentException("Not valid triangle sides");
-
-		if(b <= 0) {
+	//setting only valid sides for triangle
+	public void setSideB(double sideB) {
+		if(sideB <= 0)
 			throw new IllegalArgumentException("Side b can't be <= 0!");
-		}
-		else this.b = b;
+		if(!isValidTriangle(mSideA, sideB, mSideC))
+			throw new IllegalArgumentException("Not valid side B!");
+		else mSideB = sideB;
 	}
 	
-	public double getB() {
-		return this.b;
+	public double getSideB() {
+		return mSideB;
 	}
-	
-	public void setC(double c) {
-		if(!isTriangle(a, b, c)) throw new IllegalArgumentException("Not valid triangle sides");
-
-		if(c <= 0) {
+	//setting only valid sides for triangle
+	public void setSideC(double sideC) {
+		if(sideC <= 0)
 			throw new IllegalArgumentException("Side c can't be <= 0!");
-		}
-		else this.c = c;
+		if(!isValidTriangle(mSideA, mSideB, sideC)) 
+			throw new IllegalArgumentException("Not valid side C!");
+		mSideC = sideC;
 	}
 	
-	public double getC() {
-		return this.c;
+	public double getSideC() {
+		return mSideC;
 	}
-	
-	private boolean isTriangle(double a, double b, double c) {
-		if (a+b > c && a+c > b && b+c > a) return true;
+	//method to check if the given 3 sides describes triangle
+	private boolean isValidTriangle(double sideA, double sideB, double sideC) {
+		if (sideA + sideB > sideC && sideA + sideC > sideB && sideB + sideC > sideA) 
+			return true;
 		return false;
 	}
-	
+	//overriden method for calculating area of triangle	
 	@Override
 	public double area() {
-		double s = (a + b + c) / 2;
-		return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+		//s is halfperimeter
+		double s = (mSideA + mSideB + mSideC) / 2;
+		//Heron's formula
+		return Math.sqrt(s * (s - mSideA) * (s - mSideB) * (s - mSideC));
 	}
-
+	//overriden method for calculating perimeter of triangle
 	@Override
 	public double perimeter() {
-		return (double)(a + b + c);
+		return mSideA + mSideB + mSideC;
 	}
 	
 

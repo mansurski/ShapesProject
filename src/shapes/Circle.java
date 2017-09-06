@@ -1,37 +1,39 @@
 package shapes;
 
+//the circle is shape
 public class Circle extends Shape {
+	//we can describe circle with its radius
+	private double mRadius;
 	
-	private double radius;
+	//the constant PI
 	final double pi = Math.PI;
-	
-	public Circle() {
-		setRadius(1);
-	}
 	
 	public Circle(double radius) {
 		setRadius(radius);
 	}
-	
+
+	//check for negative radius in setter
 	public void setRadius(double radius) {
 		if(radius <= 0) {
 			throw new IllegalArgumentException("Radius can't be <= 0!");
 		}
-		else this.radius = radius;
+		mRadius = radius;
 	}
 	
 	public double getRadius() {
-		return this.radius;
+		return mRadius;
 	}
 	
+	//the overriden method for calculating the area of given circle
 	@Override
 	public double area() {
-		return (double)(pi * Math.pow(radius, 2));
+		return pi * Math.pow(mRadius, 2);
 	}
 
+	//the overriden method for calculating the perimeter of given circle
 	@Override
 	public double perimeter() {
-		return (double)(2 * pi * radius);
+		return 2 * pi * mRadius;
 	}
 
 }

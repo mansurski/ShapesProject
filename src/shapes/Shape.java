@@ -6,5 +6,9 @@ public abstract class Shape {
 	 * @return double
 	 */
 	public abstract double area();
+	/**
+	 * calculate perimeter
+	 * @return double
+	 */
 	public abstract double perimeter();
 }
