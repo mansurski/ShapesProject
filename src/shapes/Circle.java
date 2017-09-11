@@ -6,7 +6,7 @@ public class Circle extends Shape {
 	private double mRadius;
 	
 	//the constant PI
-	final double pi = Math.PI;
+	public static final double PI = Math.PI;
 	
 	public Circle(double radius) {
 		setRadius(radius);
@@ -27,13 +27,13 @@ public class Circle extends Shape {
 	//the overriden method for calculating the area of given circle
 	@Override
 	public double area() {
-		return pi * Math.pow(mRadius, 2);
+		return PI * Math.pow(mRadius, 2);
 	}
 
 	//the overriden method for calculating the perimeter of given circle
 	@Override
 	public double perimeter() {
-		return 2 * pi * mRadius;
+		return 2 * PI * mRadius;
 	}
 
 }
